@@ -1,0 +1,27 @@
+<div class="container">
+  <h1>Student Records</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Marks</th>
+        <th>Result</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Loop through each student and display their details -->
+      @for (student of students; track student.id) {
+        <tr>
+          <td>{{ student.id }}</td>
+          <td>{{ student.name }}</td>
+          <td>{{ student.marks }}</td>
+          <!-- Apply green for passed, red for failed -->
+          <td [class]="student.marks >= 50 ? 'passed' : 'failed'">
+            {{ getResult(student.marks) }}
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>
